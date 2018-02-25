@@ -1,0 +1,64 @@
+<html>
+<head>
+<script src="http://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<script language="JavaScript">
+	function postArticle(){
+		steem.broadcast.comment(
+			document.getElementById('postingKey').value, // posting wif
+			'', // author, // leave blank for new post
+			'postmaster', // first tag
+			document.getElementById('username').value, // username
+			'my-post-assistant', // permlink
+			document.getElementById('title').value, // title
+			document.getElementById('article').value, // Body of post
+			// json metadata (additional tags, app name...)
+			{ tags: ['easy posting on Steemit'], app: 'postmaster'},
+			function (err, result) {
+				if(err) alert('failure... '+err);
+				else alert('Success!');
+			}
+		);
+	}
+	function readUser() {
+		steem.api.getAccounts(['maryfavour', 'gregjava'], function(err, result) {
+			if(err) alert('failure... '+err);
+			else alert('Ready!<br/>');
+			for (var result in content) { if (content!=' ') alert('    '+content+",<br/>"); }
+		});
+	}
+</script>
+<style>
+	*{ box-sizing:border-box; margin:0; padding:0 }
+	body {text-align:center; font-size:15px; font-weight:bolder; }
+	input {margin:0.5%; padding:0.5%; font-weight:lighter; border-radius:5px; }
+	textarea {margin:0.5%; padding:1%; font-weight:lighter; border-radius:5px; }
+	button {background-color:blue; color:white; transition:0.5s; border-radius:10px; margin:0.5% 1.5%; padding:0.5% 1.5%; box-shadow:-2px 4px 5px #111; }
+	button:active {background-color:#ccc; color:white; }
+	button:hover {background-color:white; color:blue; font-weight:bold; box-shadow:-1px 2px 5px #333;  }
+	.title {font-size:20px;}
+	.flexItems { display:flex; justify-content:center; align-items:center; background-color:white; color:teal; }
+	.leftColumn { position:absolute; background-color:white; color:teal; top:10%; left:1%; width:29%; height:89%; }
+	.rightColumn { position:absolute; background-color:white; color:teal; top:10%; left:31%; width:68%; }
+</style>
+</head>
+<body>
+	<span data-mobile-img="steemlogo2.png" style="background:url('steemlogo2.png') repeat center center; position:absolute; top:0; left:0; width:100%; height:100%; ">
+	<br/>
+		<header><h1>Steem Blockchain</h1><h2>PostMaster</h2></header>
+		<div class="leftColumn">
+			<div class="flexItems">
+			</div>
+		</div>
+		<div class="rightColumn">
+			Username: &nbsp; &nbsp;<input id="username" type="text" size="65" placeholder="Enter your Username" /><br/>
+			Posting Key: <input id="postingKey" type="password" size="65" placeholder="Enter your Posting Key" /><br/>
+			Title of Post: <input id="title" type="text" size="65" placeholder="Enter your article title" /><br/><br/>
+			<span class="title">Post:</br/></span>
+			<textarea id="article" rows="15" cols="70" placeholder="Enter your article texts here..."></textarea><br/>
+			<button id="postIt" onclick="postArticle()">Post Now</button>
+			<button id="postIt" onclick="readUser()">Find All Users</button>
+			<button id="postIt" onclick="postArticle()">Find Trending Tags</button>
+		</div>
+	</span>
+</body>
+</html>

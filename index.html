@@ -1,0 +1,178 @@
+<html>
+<head>
+	<script src="http://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+	<style>
+		*{ box-sizing:border-box; margin:0; padding:0 }
+		body {text-align:center; font-size:15px; font-weight:bolder; }
+		input {margin:0.5%; padding:0.5%; font-weight:lighter; border-radius:5px; }
+		textarea {margin:0.5%; padding:1%; font-weight:lighter; border-radius:5px; }
+		button {background-color:blue; color:white; transition:0.5s; border-radius:10px; margin:0.5% 1.5%; padding:0.5% 1.5%; box-shadow:-2px 4px 5px #111; }
+		button:active {background-color:#ccc; color:white; }
+		button:hover {background-color:white; color:blue; font-weight:bold; box-shadow:-1px 2px 5px #333;  }
+		.title {font-size:20px;}
+		.flexItems { display:flex; justify-content:center; align-items:center; background-color:white; color:teal; }
+		.engine { position:absolute; background-color:white; color:teal; top:-3%; left:20%; width:60%; }
+			/* For Safari, Chrome and Opera browsers, does not work on <IE9 */
+			@-webkit-keyframes pixAnimation {
+				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				25%  {left:0px; top:0px; background:url("steemlogo.jpg") no-repeat center;
+				-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				50%  {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				75%  {left:0px; top:0px; background:url("buy_now.png") no-repeat center;
+				-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				100% {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+			}
+			@-moz-keyframes pixAnimation {
+				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				25%  {left:0px; top:0px; background:url("steemlogo.jpg") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				50%  {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				75%  {left:0px; top:0px; background:url("buy_now.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				100% {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+			}
+			@-ms-keyframes pixAnimation {
+				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				25%  {left:0px; top:0px; background:url("steemlogo.jpg") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				50%  {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				75%  {left:0px; top:0px; background:url("buy_now.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				100% {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-moz-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+			}
+			@-o-keyframes pixAnimation {
+				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-o-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				25%  {left:0px; top:0px; background:url("steemlogo.jpg") no-repeat center;
+				-o-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				50%  {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-o-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				75%  {left:0px; top:0px; background:url("buy_now.png") no-repeat center;
+				-o-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+				100% {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
+				-o-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+			}
+			/* Does not work on <IE9 */
+			@keyframes pixAnimation {
+				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center; background-size: cover;}
+				25%  {left:0px; top:0px; background:url("steemlogo.jpg") no-repeat center; background-size: cover;}
+				50%  {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center; background-size: cover;}
+				75%  {left:0px; top:0px; background:url("buy_now.png") no-repeat center; background-size: cover;}
+				100% {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center; background-size: cover;}
+			}
+			.animatePix{
+				width: 100%; height:100%;
+				-webkit-animation: pixAnimation 30s infinite;
+				animation: pixAnimation 30s infinite;
+				select option:hover {transition:0.5s}
+			}
+	</style>
+	<script language="JavaScript">
+		function postArticle(){
+			steem.broadcast.comment(
+				document.getElementById('postingKey').value, // posting wif
+				'', // author, // leave blank for new post
+				'postmaster', // first tag
+				document.getElementById('username').value, // username
+				'my-post-assistant', // permlink
+				document.getElementById('title').value, // title
+				document.getElementById('article').value, // Body of post
+				// json metadata (additional tags, app name...)
+				{ tags: ['easy posting on Steemit'], app: 'postmaster'},
+				function (err, result) {
+					if(err) alert('failure... '+err);
+					else alert('Success!');
+				}
+			);
+		}
+		function readUser() {
+			steem.api.getAccounts(['maryfavour', 'gregjava'], function(err, result) {
+				if(err) alert('failure... '+err);
+				else alert('Ready!<br/>');
+				for (var result in content) { if (content!=' ') alert('    '+content+",<br/>"); }
+			});
+		}
+		function findResultant(){
+			selectValue = document.getElementById('regarding-select-menu').value;
+			if (selectValue == 'sbd') {
+				amt = document.getElementById('amt').value;
+				result = amt*(10000/8);
+				document.getElementById('result').innerHTML = '= '+result+' NGN';
+			}
+		}
+	</script>
+</head>
+<body class="animatePix">
+	<div class="engine" style="margin:5% 0%">
+		<header><h1>RedFishPillar</h1><h3>Mobile Airtime Vendor</h3></header>
+		<form method="post" action="#" autocomplete="on" class="contact-us-form" style="margin:5% 0%">
+			<div class="col-md-12">
+				<div class="form-group">
+					<hr style="border-color:#ffcb00; border-style:ridge; border-width:2px; width:100%"/>
+				</div>
+				<div class="form-group">
+					<div class="input-group contactUs-regardingSelect">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-euro"></span></span>
+						<select class="form-control" name="currency" id="regarding-select-menu" onclick="findResultant()">
+							<option value="">Payment System</option>
+							<option value="sbd" id="sbd">Steem Blockchain Dollar</option>
+							<option value="btc" id="btc">Bitcoin</option>
+							<option value="eth" id="eth">Ethereum</option>
+							<option value="lc" id="lc">Litecoin</option>
+							<option value="pm" id="pm">Perfect Money</option>
+						</select>
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						<input type="text" name="name" class="form-control" placeholder="Enter Username" maxlength="50" onclick="findResultant()" required><?php echo $name; ?></input><span class="text-danger"></span>
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon" id="pswdImg"><span id="lock_img" class="glyphicon glyphicon-eye-open"></span></span>
+						<input type="password" name="pass" class="form-control masked" placeholder="Enter Valid Key" maxlength="15" id="pswdTxtBox" onclick="findResultant()" required />
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+						<input type="text" name="amt" id="amt" class="form-control" placeholder="Amount to Buy" maxlength="40" onclick="findResultant()" required><?php echo $amt; ?></input><span class="text-danger"></span>
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+						<label name="result" id="result" class="form-control" placeholder="" maxlength="40" onclick="findResultant()" required>Resultant Value</label><span class="text-danger"></span>
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+						<input type="tel" name="phone_num" id="phone_num" class="form-control" placeholder="Mobile Number to Credit" maxlength="40" onclick="findResultant()" required><?php echo $phone_num; ?></input><span class="text-danger"></span>
+					</div><span class="text-danger"></span>
+				</div><br/>
+				<div class="form-group">
+					<button type="submit" class="btn btn-block btn-primary" name="btn-signup">Buy</button>
+				</div><br/>
+				<div class="form-group">
+					<hr style="border-color:#ee0;" />
+				</div><br/>
+			</div>
+		</form>
+	</div>
+	<footer><div style="margin:5% 0%">&nbsp;</div><br/></footer>
+</body>
+</html>
