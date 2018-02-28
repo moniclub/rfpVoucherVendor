@@ -1,8 +1,45 @@
 <html>
 <head>
 	<script src="http://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+	<script src="code.jquery.com/jquery-3.1.0.js"></script>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+	<meta charset="UTF-8"/>
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="keywords" content="Buy Vouchers, Cryptocurrency, Airtime Voucher Exchange"/>
+	<title>Mobile Airtime Vendor | REDFISHPILLAR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="icon" href="assets/images/mobile_version.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="assets/images/mobile_version.png" type="image/x-icon" />
+	
+	<link rel="alternate" hreflang="en-GB" href="index.html"/>
+	<link rel="alternate" hreflang="fr-FR" href="../fr/index.html"/>
+	<link rel="alternate" hreflang="de-DE" href="../de/index.html"/>
+	<link rel="alternate" hreflang="it-IT" href="../it/index.html"/>
+	<link rel="alternate" hreflang="es-ES" href="../es/index.html"/>
+	<link rel="alternate" hreflang="ru-RU" href="../ru/index.html"/>
+	<link rel="alternate" hreflang="ar" href="../ar/index.html"/>
+	<link rel="alternate" hreflang="pt-BR" href="../pt-br/index.html"/>
+	<link rel="alternate" hreflang="sv-SE" href="../sv/index.html"/>
+	<link rel="alternate" hreflang="nl-NL" href="../nl/index.html"/>
+	<link rel="alternate" hreflang="nb-NO" href="../nb/index.html"/>
+	<link rel="alternate" hreflang="pl-PL" href="../pl/index.html"/>
+	 
+	<meta name="description" content="Buy vouchers online using cryptocurrencies from any country around the world."/>
+	<link rel="canonical" href="index.html"/>
+	<meta property="og:locale" content="en_GB"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:title" content="Mobile Airtime Vendor"/>
+	<meta property="og:description" content="Buy vouchers online using cryptocurrencies from any country around the world"/>
+	<meta property="og:url" content="https://www.moniclub.org/rfpVoucherVendor/index.html"/>
+	<meta property="og:site_name" content="Mobile Airtime Vendor"/>
+	<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:description" content="Buy vouchers online using cryptocurrencies from any country around the world"/>
+	<meta name="twitter:title" content="Mobile Airtime Vendor"/>
+	<meta name="twitter:domain" content="moniclub.org/rfpVoucherVendor"/>
 	<style>
 		*{ box-sizing:border-box; margin:0; padding:0 }
 		body {text-align:center; font-size:15px; font-weight:bolder; }
@@ -10,10 +47,10 @@
 		textarea {margin:0.5%; padding:1%; font-weight:lighter; border-radius:5px; }
 		button {background-color:blue; color:white; transition:0.5s; border-radius:10px; margin:0.5% 1.5%; padding:0.5% 1.5%; box-shadow:-2px 4px 5px #111; }
 		button:active {background-color:#ccc; color:white; }
-		button:hover {background-color:white; color:blue; font-weight:bold; box-shadow:-1px 2px 5px #333;  }
+		button:hover {background-color:white; color:blue; font-weight:bold; box-shadow:-1px 2px 5px #333; padding:0; }
 		.title {font-size:20px;}
 		.flexItems { display:flex; justify-content:center; align-items:center; background-color:white; color:teal; }
-		.engine { position:absolute; background-color:white; color:teal; top:-3%; left:20%; width:60%; }
+		.engine { position:absolute; background-color:white; color:teal; top:0%; left:20%; width:60%; }
 			/* For Safari, Chrome and Opera browsers, does not work on <IE9 */
 			@-webkit-keyframes pixAnimation {
 				0%   {left:0px; top:0px; background:url("steemlogo2.png") no-repeat center;
@@ -114,9 +151,105 @@
 	</script>
 </head>
 <body class="animatePix">
-	<div class="engine" style="margin:5% 0%">
-		<header><h1>RedFishPillar</h1><h3>Mobile Airtime Vendor</h3></header>
-		<form method="post" action="#" autocomplete="on" class="contact-us-form" style="margin:5% 0%">
+	<script type="text/javascript">
+		var has_cookie_a = false;
+		if (typeof docCookies != 'undefined') {
+			has_cookie_a = IsLoggedIn();
+		} else {
+			var docCookiesIns = {
+				getItem:function (sKey) {
+					return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+				},
+				setItem:function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+					if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+					var sExpires = "";
+					if (vEnd) {
+						switch (vEnd.constructor) {
+							case Number:
+								sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" :"; max-age=" + vEnd;
+								break;
+							case String:
+								sExpires = "; expires=" + vEnd;
+								break;
+							case Date:
+								sExpires = "; expires=" + vEnd.toUTCString();
+								break;
+						}
+					} document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain :"") + (sPath ? "; path=" + sPath :"") + (bSecure ? "; secure" :"");
+					return true;
+				},
+				removeItem:function (sKey, sPath, sDomain) {
+					if (!sKey || !this.hasItem(sKey)) { return false; }
+					document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain :"") + ( sPath ? "; path=" + sPath :"");
+					return true;
+				},
+				hasItem:function (sKey) {
+					return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+				},
+				keys:/* optional method:you can safely remove it! */ function () {
+					var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+					for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+					return aKeys;
+				}
+			};
+			has_cookie_a = docCookiesIns.hasItem('a');
+		}
+
+		if(has_cookie_a){
+			$('body').addClass( "login" );
+			(function(LoggedUser){
+				// var accountType = LoggedUser.account_type === 'Standard' ? "Basic" :LoggedUser.account_type;
+				// $("#email").html(accountType);
+				$("#name").html(LoggedUser.user);
+				$("#acct_name").html(LoggedUser.acct_name);
+				$("#email").html(LoggedUser.email);
+				$("#phone_num").html(LoggedUser.phone_num);
+				$("#zipcode").html(LoggedUser.zipcode);
+				$("#city").html(LoggedUser.city);
+
+			})( get_user_params() );
+		}
+		function IsLoggedIn(){ return <?php
+			if ( isset($_SESSION['user']) && $_SESSION['user']!=="") echo true;
+			else echo false;
+		?>; }
+		function setCookie(cname, cvalue, exdays) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/index.html";
+		}
+		function getCookie(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+		function checkCookie() {
+			var user = getCookie("user");
+			if (user != "") {
+				alert("Welcome again " + user);
+			} else {
+				user = prompt("Please enter your name:", "");
+				if (user != "" && user != null) {
+					setCookie("user", user, 365);
+				}
+			}
+		} 
+	</script>
+	<div class="engine">
+		<header><h1>RedFishPillar</h1><h3>Mobile Airtime Vendor</h3>
+		<div class="btns"><button id="login_btn" data-toggle="modal" data-target="#login-popup">LOGIN</button>
+		<button id="register_btn" data-toggle="modal" data-target="#register-popup">REGISTER</button></div></header>
+		<form method="post" action="#" autocomplete="on" class="form" style="margin:5% 0%">
 			<div class="col-md-12">
 				<div class="form-group">
 					<hr style="border-color:#ffcb00; border-style:ridge; border-width:2px; width:100%"/>
@@ -174,5 +307,174 @@
 		</form>
 	</div>
 	<footer><div style="margin:5% 0%">&nbsp;</div><br/></footer>
+
+	<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#000">
+		<div class="container">
+			<div style="padding:0.5%; margin:0; width:auto; height:auto; text-align:center; background-color:#000; font-size:75%; ">
+				<a href="about-us-eu/index.html" id="bottomItems">&nbsp;About Us |</a>
+				<a href="contact-us-eu/index.html" id="bottomItems">&nbsp;Leave a Message |</a>
+				<a href="" id="bottomItems">&nbsp;Site Map |</a>
+				<a href="terms-and-conditions-eu/index.html" id="bottomItems">&nbsp;Terms and Conditions</a>
+			</div>
+			<div style="padding:0.5%; margin:0; width:auto; height:auto; text-align:center; background-color:#000;">
+				<label style="color:#aaa; font-family:Garamond; font-size:160%; text-shadow:-10px 6px 10px #111;">&nbsp;voucher vendor</label>
+			</div>
+		</div>
+	</nav>
+
+
+    <script type="text/javascript">
+        function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	var numRand = getRandomInt(1, 100000000000);
+	(function(a,b,c,d){
+	a='tags.tiqcdn.com/utag/rfpVoucherVendor/uuu/prod/utag.js' + '?numRand=' +numRand;
+	b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+	a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+	})();    </script>
+		
+	<script>
+		// fb
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=324339337716324";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- Twitter -->
+	<script>!function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' :'https';
+			if (!d.getElementById(id)) {
+				js = d.createElement(s);
+				js.id = id;
+				js.src = p + '://platform.twitter.com/widgets.js';
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+		}(document, 'script', 'twitter-wjs');</script>
+
+	<!-- LinkedIn+ -->
+	<script src="platform.linkedin.com/in.js" type="text/javascript"> lang:en_US</script>
+	<!-- end of social media stuff -->
+		
+	<div class="modal fade" id="login-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog row col-md-12 col-sm-12">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="mobile-header-text">
+						<form name="loginform" action="#" method="POST">
+							<h3 class="modal-title" id="exampleModalLabel">Login to your account</h3>
+							<input class="loginbox" type="text" name="acct_name" placeholder="Username" style="margin:1%; padding:1% 1.5%; border-radius:2px; color:#333"></input><br/>
+							<input class="loginbox" type="password" name="pass" placeholder="password" id="pwd1" style="margin:1%; padding:1% 1.5%; border-radius:2px; color:#333"></input><br/>
+							<button class="loginbox" type="submit" value="Login" name="btn-login" style="">Login</button>
+						</form><button id="pswdImg1" class="glyphicon glyphicon-eye-open"></button>
+					</div>
+				</div>
+
+				<div class="modal-body row">
+					<div class="col-xs-10 col-sm-6 modal-form-wrapper">
+						<div class="login-title"><span>Forgot password?</span><a id="forgotPassword" href="forgot-password-eu/index.html"> Retrieve now</a></div>
+						<div id="login_popup_wrapper"  class="login-form-cover"></div>
+						<div id="login_deposit_error"><div class="close_error_btn">
+							<i class="icon-CancelFilled"></i></div><span id="scipio_error"></span>
+						</div>
+						<div class="loading-bar login-loading-bar"></div>
+						<div class="form-title-bottom"><li></li></div>
+					</div>
+
+					<div class="col-xs-10 col-sm-6 modal-text-wrapper">
+						<p>Don’t have an account?<a href="redirects/open-account/index.html"> Sign up </a></p>
+						<p style="color:white">Buying airtime vouchers online has become very easy. It only takes one click on <a href="">rfpVoucherVendor</a>.</p>
+					</div>
+				</div>
+				<div id="email_sent" style="display:none"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="modal fade" id="register-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog row col-md-12 col-sm-12">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="mobile-header-text">
+						<form name="loginform" action="#" method="POST">
+							<h3 class="modal-title" id="exampleModalLabel">Login to your account</h3>
+							<input class="loginbox" type="text" name="acct_name" placeholder="Username" style="margin:1%; padding:1% 1.5%; border-radius:2px; color:#333"></input><br/>
+							<input class="loginbox" type="password" name="pass" placeholder="password" id="pwd1" style="margin:1%; padding:1% 1.5%; border-radius:2px; color:#333"></input><br/>
+							<button class="loginbox" type="submit" value="Login" name="btn-login" style="">Login</button>
+						</form><button id="pswdImg1" class="glyphicon glyphicon-eye-open"></button>
+					</div>
+				</div>
+
+				<div class="modal-body row">
+					<div class="col-xs-10 col-sm-6 modal-form-wrapper">
+						<div class="login-title"><span>Forgot password?</span><a id="forgotPassword" href="forgot-password-eu/index.html"> Retrieve now</a></div>
+						<div id="login_popup_wrapper"  class="login-form-cover"></div>
+						<div id="login_deposit_error"><div class="close_error_btn">
+							<i class="icon-CancelFilled"></i></div><span id="scipio_error"></span>
+						</div>
+						<div class="loading-bar login-loading-bar"></div>
+						<div class="form-title-bottom"><li></li></div>
+					</div>
+
+					<div class="col-xs-10 col-sm-6 modal-text-wrapper">
+						<p>Don’t have an account?<a href="redirects/open-account/index.html"> Sign up </a></p>
+						<p style="color:white">Buying airtime vouchers online has become very easy. It only takes one click on <a href="">rfpVoucherVendor</a>.</p>
+					</div>
+				</div>
+				<div id="email_sent" style="display:none"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function show() {
+			var p = document.getElementById('pswdTxtBox');
+			p.setAttribute('type', 'text');
+			var p1 = document.getElementById('pwd1');
+			p1.setAttribute('type', 'text');
+			var p2 = document.getElementById('lock_img');
+			p2.setAttribute('class', 'glyphicon glyphicon-eye-close');
+			var p3 = document.getElementById('pswdImg1');
+			p3.setAttribute('class', 'glyphicon glyphicon-eye-close');
+		}
+
+		function hide() {
+			var p = document.getElementById('pswdTxtBox');
+			p.setAttribute('type', 'password');
+			var p1 = document.getElementById('pwd1');
+			p1.setAttribute('type', 'password');
+			var p2 = document.getElementById('lock_img');
+			p2.setAttribute('class', 'glyphicon glyphicon-eye-open');
+			var p3 = document.getElementById('pswdImg1');
+			p3.setAttribute('class', 'glyphicon glyphicon-eye-open');
+		}
+
+		var pwShown = 0;
+
+		document.getElementById("pswdImg").addEventListener("click", function () {
+			if (pwShown == 0) {
+				pwShown = 1;
+				show();
+			} else {
+				pwShown = 0;
+				hide();
+			}
+		}, false);
+
+		document.getElementById("pswdImg1").addEventListener("click", function () {
+			if (pwShown == 0) {
+				pwShown = 1;
+				show();
+			} else {
+				pwShown = 0;
+				hide();
+			}
+		}, false);
+	</script>
 </body>
 </html>
